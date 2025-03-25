@@ -34,6 +34,8 @@ FROM base as dev
 
 WORKDIR /app
 
+RUN swag init --parseInternal --parseDepth 100 -d 'cmd/,srv/api,types' -o ./.swagger/docs
+
 CMD ["go","run","./cmd"]
 
 # ============================== # 
@@ -46,6 +48,8 @@ WORKDIR /app
 
 COPY ./configs/prod.config.yaml ./configs/config.yaml
 
+RUN swag init --parseInternal --parseDepth 100 -d 'cmd/,srv/api,types' -o ./.swagger/docs
+
 RUN go build -o ./build/gobit ./cmd
 
 # ============================== # 
@@ -53,6 +57,10 @@ RUN go build -o ./build/gobit ./cmd
 # ============================== # 
 
 FROM debian:bookworm-slim AS prod 
+
+# set timezone
+ENV TZ=Asia/Tehran
+RUN ls /usr/share/zoneinfo && cp /usr/share/zoneinfo/Iran /etc/localtime && echo "Asia/Tehran" >  /etc/timezone
 
 WORKDIR /app
 

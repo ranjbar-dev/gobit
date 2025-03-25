@@ -3,8 +3,8 @@ FROM postgres:16.2
 # https://docs.timescale.com/self-hosted/latest/install/installation-linux/ 
 
 # set timezone
-ENV TZ=Europe/Chisinau
-RUN ls /usr/share/zoneinfo && cp /usr/share/zoneinfo/Iran /etc/localtime && echo "Europe/Chisinau" >  /etc/timezone
+ENV TZ=Asia/Tehran 
+RUN ls /usr/share/zoneinfo && cp /usr/share/zoneinfo/Iran /etc/localtime && echo "Asia/Tehran" >  /etc/timezone
 
 # copy postgres config file 
 COPY ./.docker/postgres/postgresql.conf /var/lib/pgsql/16/data/postgresql.conf

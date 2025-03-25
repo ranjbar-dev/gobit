@@ -15,12 +15,14 @@ func init() {
 
 	data.SetConfigType("yaml")
 
+	data.AddConfigPath("/app/config")
+
 	if len(os.Args) > 1 {
 
 		data.SetConfigFile(os.Args[1])
 	} else {
 
-		data.SetConfigName("config")
+		data.SetConfigName("./config")
 	}
 
 	data.AutomaticEnv()
