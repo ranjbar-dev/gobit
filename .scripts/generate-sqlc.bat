@@ -1,0 +1,1 @@
+cd sql && sqlc generate

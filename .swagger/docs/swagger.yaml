@@ -1,0 +1,59 @@
+info:
+  contact: {}
+paths:
+  /server/memory-usage:
+    get:
+      consumes:
+      - application/json
+      description: Get server memory usage
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+      summary: Server memory usage
+      tags:
+      - Server
+  /server/ping:
+    get:
+      consumes:
+      - application/json
+      description: ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+      summary: Ping (GET)
+      tags:
+      - Server
+    post:
+      consumes:
+      - application/json
+      description: ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+      summary: Ping (POST)
+      tags:
+      - Server
+  /server/timestamp:
+    get:
+      consumes:
+      - application/json
+      description: Get server timestamp
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: int64
+      summary: Server time
+      tags:
+      - Server
+swagger: "2.0"

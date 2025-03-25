@@ -1,0 +1,4 @@
+CREATE TABLE transactions (
+  id VARCHAR(100) NOT NULL PRIMARY KEY,
+  block_height BIGINT NOT NULL
+);

@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: postgres-gobit-container
+    build:
+      context: .
+      dockerfile: postgres.Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .docker/postgres/.env
+    ports:
+      - "7035:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+
+  gobit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    container_name: gobit-container
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+    ports:
+      - "7036:7036"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:
+    driver: local

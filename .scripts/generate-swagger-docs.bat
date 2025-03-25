@@ -1,0 +1,1 @@
+swag init  --parseInternal --parseDepth 100 -d 'cmd/engine/,srv/api,types' -o ./.swagger/docs

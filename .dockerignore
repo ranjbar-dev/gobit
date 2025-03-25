@@ -1,0 +1,11 @@
+/.idea
+/.git
+/.vscode
+/.scripts
+/build
+/docs
+/gitignore
+/postgres.Dockerfile
+/README.md
+/redis.Dockerfile
+/influxdb.Dockerfile
