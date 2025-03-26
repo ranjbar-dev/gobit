@@ -2,10 +2,12 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
 
+	"github.com/ranjbar-dev/gobit/internal/blockstream"
 	"github.com/ranjbar-dev/gobit/srv/api"
 	"github.com/ranjbar-dev/gobit/srv/cron"
 )
@@ -19,6 +21,8 @@ func main() {
 			// golog.Logger.Error("Error in engine", "recover function called", err)
 		}
 	}()
+
+	fmt.Println(blockstream.NewBlockStream().GetBlockHashByHeight(100))
 
 	// Create a context with cancellation
 	ctx, cancel := context.WithCancel(context.Background())
